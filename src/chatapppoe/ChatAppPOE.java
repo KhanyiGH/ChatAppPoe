@@ -9,6 +9,7 @@ public class ChatAppPOE {
         Scanner scanner = new Scanner(System.in);
         Login login = new Login();
         
+        System.out.println("===Registration===");
         System.out.println("Enter username: ");
         String username = scanner.nextLine();
         
