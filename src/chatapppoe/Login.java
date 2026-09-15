@@ -9,11 +9,19 @@ public class Login{
     private String storedCellNumber;
     private String firstName;
     private String lastName;
-    
+   
+    /**
+     * Checks that the username contains an underscore and is no more than 5 characters long.
+     * */
     public boolean checkUserName(String username) {
         return username.contains("_") && username.length()<=5;
         
     }
+    
+    /**
+ * Checks that the password is at least 8 characters, contains a capital letter,
+ * a number, and a special character.
+ */
     public boolean checkPasswordComplexity(String password){
         if (password.length()<8) return false;
         boolean hasUpper = false, hasDigit = false, hasSpecial = false;
@@ -24,9 +32,19 @@ public class Login{
         }
         return hasUpper && hasDigit && hasSpecial;
     }
+    
+    /**
+ * Checks that the cell phone number starts with the South African international
+ * code (+27) followed by 9 digits.
+ */
     public boolean checkCellPhoneNumber(String cellNumber){
         return cellNumber.matches("\\+27\\d{9}");
     }
+    
+    /**
+ * Registers a new user by validating the username, password, and cell number.
+ * Returns a message indicating success or which validation failed.
+ */
     public String registerUser(String username, String password, String cellNumber, String firstName, String lastName) {
     if (!checkUserName(username)) {
         return "Username is not correctly formatted; please ensure that your username contains an underscore and is no more than five characters in length.";
@@ -45,9 +63,17 @@ public class Login{
     
     return "Username successfully captured. Password successfully captured. Cell number successfully captured.";
 }
+    
+    /**
+ * Checks whether the given username and password match the stored credentials.
+ */
     public boolean loginUser(String username, String password) {
     return username.equals(storedUsername) && password.equals(storedPassword);
 }
+    
+    /**
+ * Returns the login status message based on whether login was successful.
+ */
     public String returnLoginStatus(boolean loginSuccess) {
     if (loginSuccess) {
         return "Welcome " + firstName + ", " + lastName + " it is great to see you again.";
