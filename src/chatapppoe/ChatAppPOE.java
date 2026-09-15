@@ -1,4 +1,4 @@
-
+//Entry point for PROG5121 Poe- Part 1: Registration and Login
 package chatapppoe;
 
 import java.util.Scanner;
