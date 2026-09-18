@@ -37,6 +37,12 @@ public class Login{
  * Checks that the cell phone number starts with the South African international
  * code (+27) followed by 9 digits.
  */
+    /**
+ * Cell phone number validation using regular expressions.
+ * Reference: Oracle (2024) Pattern (Java SE 17 & JDK 17). Available at: 
+ * https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/regex/Pattern.html 
+ * (Accessed: 18 September 2026).
+ */
     public boolean checkCellPhoneNumber(String cellNumber){
         return cellNumber.matches("\\+27\\d{9}");
     }
