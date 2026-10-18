@@ -40,7 +40,29 @@ public class ChatAppPOE {
         System.out.println(loginMessage);
         
         
-        
+       System.out.println("Welcome to QuickChat.");
+int choice = 0;
+
+while (choice != 3) {
+    System.out.println("1) Send Messages");
+    System.out.println("2) Show recently sent messages");
+    System.out.println("3) Quit");
+    choice = Integer.parseInt(scanner.nextLine());
+
+    switch (choice) {
+        case 1:
+            System.out.println("Sending... (we build this later)");
+            break;
+        case 2:
+            System.out.println("Coming Soon.");
+            break;
+        case 3:
+            System.out.println("Goodbye.");
+            break;
+        default:
+            System.out.println("Invalid option.");
+    }
+} 
   
     }
     
