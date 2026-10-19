@@ -66,4 +66,15 @@ public class Message {
     public String printMessages() {
         return sentLog;
     }
+        public void storeMessage(String messageID, String hash, String recipient, String text) {
+        String entry = "{\"messageID\": \"" + messageID + "\", "
+                + "\"messageHash\": \"" + hash + "\", "
+                + "\"recipient\": \"" + recipient + "\", "
+                + "\"message\": \"" + text.replace("\"", "\\\"") + "\"}";
+        try (java.io.FileWriter writer = new java.io.FileWriter("messages.json", true)) {
+            writer.write(entry + "\n");
+        } catch (java.io.IOException e) {
+            System.out.println("Could not store the message.");
+        }
+    }
 }

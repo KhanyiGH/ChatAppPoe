@@ -97,6 +97,7 @@ if (action == 1) {
     System.out.println("Press 0 to delete the message.");
     scanner.nextLine();
 } else if (action == 3) {
+    msg.storeMessage(messageID, hash, recipient, text);
     System.out.println("Message successfully stored.");
 } else {
     System.out.println("Invalid option.");
