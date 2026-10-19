@@ -108,6 +108,7 @@ break;
             break;
         case 3:
             System.out.println("Goodbye.");
+            System.out.println("Total messages sent: " + totalSent);
             break;
         default:
             System.out.println("Invalid option.");
