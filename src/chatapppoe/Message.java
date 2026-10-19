@@ -1,4 +1,5 @@
 package chatapppoe;
+import java.util.Random;
 
 /**
  *
@@ -26,5 +27,12 @@ public class Message {
     String hash = start + ":" + messageNumber + ":" + firstWord + lastWord;
     return hash.toUpperCase();
 }  
-    
+    public String generateMessageID() {
+    Random random = new Random();
+    String id = "";
+    for (int i = 0; i < 10; i++) {
+        id = id + random.nextInt(10);
+    }
+    return id;
+}
 }
