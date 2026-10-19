@@ -58,9 +58,31 @@ while (choice != 3) {
     choice = Integer.parseInt(scanner.nextLine());
 
     switch (choice) {
-        case 1:
-            System.out.println("Sending... (we build this later)");
-            break;
+        case 1: {
+    if (sentCount >= numMessages) {
+        System.out.println("You have already entered all " + numMessages + " messages.");
+        break;
+    }
+    String messageID = msg.generateMessageID();
+    System.out.println("Enter recipient number:");
+    String recipient = scanner.nextLine();
+    String cellResult = msg.checkRecipientCell(recipient);
+    System.out.println(cellResult);
+    if (!cellResult.equals("Cell phone number successfully captured.")) {
+        break;
+    }
+    System.out.println("Enter your message:");
+    String text = scanner.nextLine();
+    String lengthResult = msg.checkMessageLength(text);
+    System.out.println(lengthResult);
+    if (!lengthResult.equals("Message ready to send.")) {
+        break;
+    }
+    String hash = msg.createMessageHash(messageID, sentCount, text);
+    System.out.println("Message ID: " + messageID);
+    System.out.println("Message Hash: " + hash);
+    break;
+}
         case 2:
             System.out.println("Coming Soon.");
             break;
