@@ -87,7 +87,7 @@ int action = Integer.parseInt(scanner.nextLine());
 sentCount++;
 
 if (action == 1) {
-    totalSent++;
+    msg.recordSent(messageID, hash, recipient, text);
     System.out.println("Message successfully sent.");
     System.out.println("Message ID: " + messageID);
     System.out.println("Message Hash: " + hash);
@@ -108,7 +108,7 @@ break;
             break;
         case 3:
             System.out.println("Goodbye.");
-            System.out.println("Total messages sent: " + totalSent);
+            System.out.println("Total messages sent: " + msg.returnTotalMessages());
             break;
         default:
             System.out.println("Invalid option.");
