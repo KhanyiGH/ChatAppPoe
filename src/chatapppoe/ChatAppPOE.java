@@ -39,8 +39,16 @@ public class ChatAppPOE {
        String loginMessage = login.returnLoginStatus(loginSuccess);
         System.out.println(loginMessage);
         
-        
-       System.out.println("Welcome to QuickChat.");
+        if (!loginSuccess) {
+    return;
+}
+
+System.out.println("Welcome to QuickChat.");
+System.out.print("How many messages do you want to enter? ");
+int numMessages = Integer.parseInt(scanner.nextLine());
+int sentCount = 0;
+Message msg = new Message();
+     
 int choice = 0;
 
 while (choice != 3) {
