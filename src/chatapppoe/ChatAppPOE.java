@@ -47,6 +47,7 @@ System.out.println("Welcome to QuickChat.");
 System.out.print("How many messages do you want to enter? ");
 int numMessages = Integer.parseInt(scanner.nextLine());
 int sentCount = 0;
+int totalSent = 0;
 Message msg = new Message();
      
 int choice = 0;
@@ -79,9 +80,28 @@ while (choice != 3) {
         break;
     }
     String hash = msg.createMessageHash(messageID, sentCount, text);
+         System.out.println("1) Send Message");
+System.out.println("2) Disregard Message");
+System.out.println("3) Store Message to send later");
+int action = Integer.parseInt(scanner.nextLine());
+sentCount++;
+
+if (action == 1) {
+    totalSent++;
+    System.out.println("Message successfully sent.");
     System.out.println("Message ID: " + messageID);
     System.out.println("Message Hash: " + hash);
-    break;
+    System.out.println("Recipient: " + recipient);
+    System.out.println("Message: " + text);
+} else if (action == 2) {
+    System.out.println("Press 0 to delete the message.");
+    scanner.nextLine();
+} else if (action == 3) {
+    System.out.println("Message successfully stored.");
+} else {
+    System.out.println("Invalid option.");
+}
+break;
 }
         case 2:
             System.out.println("Coming Soon.");
