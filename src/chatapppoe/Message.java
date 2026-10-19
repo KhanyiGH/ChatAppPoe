@@ -1,4 +1,5 @@
 package chatapppoe;
+
 import java.util.Random;
 
 /**
@@ -6,6 +7,9 @@ import java.util.Random;
  * @author Khanyi
  */
 public class Message {
+
+    private int totalMessages = 0;
+    private String sentLog = "";
 
     public boolean checkMessageID(String messageID) {
         return messageID.length() <= 10;
@@ -18,21 +22,48 @@ public class Message {
             return "Cell phone number is incorrectly formatted or does not contain an international code. Please correct the number and try again.";
         }
     }
-  public String createMessageHash(String messageID, int messageNumber, String message) {
-    String[] words = message.split(" ");
-    String firstWord = words[0].replaceAll("[^a-zA-Z]", "");
-    String lastWord = words[words.length - 1].replaceAll("[^a-zA-Z]", "");
-    String start = messageID.substring(0, 2);
 
-    String hash = start + ":" + messageNumber + ":" + firstWord + lastWord;
-    return hash.toUpperCase();
-}  
-    public String generateMessageID() {
-    Random random = new Random();
-    String id = "";
-    for (int i = 0; i < 10; i++) {
-        id = id + random.nextInt(10);
+    public String createMessageHash(String messageID, int messageNumber, String message) {
+        String[] words = message.split(" ");
+        String firstWord = words[0].replaceAll("[^a-zA-Z]", "");
+        String lastWord = words[words.length - 1].replaceAll("[^a-zA-Z]", "");
+        String start = messageID.substring(0, 2);
+
+        String hash = start + ":" + messageNumber + ":" + firstWord + lastWord;
+        return hash.toUpperCase();
     }
-    return id;
-}
+
+    public String generateMessageID() {
+        Random random = new Random();
+        String id = "";
+        for (int i = 0; i < 10; i++) {
+            id = id + random.nextInt(10);
+        }
+        return id;
+    }
+
+    public String checkMessageLength(String message) {
+        if (message.length() <= 250) {
+            return "Message ready to send.";
+        } else {
+            int extra = message.length() - 250;
+            return "Message exceeds 250 characters by " + extra + ", please reduce the size.";
+        }
+    }
+
+    public void recordSent(String messageID, String hash, String recipient, String text) {
+        totalMessages++;
+        sentLog = sentLog + "Message ID: " + messageID + "\n"
+                + "Message Hash: " + hash + "\n"
+                + "Recipient: " + recipient + "\n"
+                + "Message: " + text + "\n\n";
+    }
+
+    public int returnTotalMessages() {
+        return totalMessages;
+    }
+
+    public String printMessages() {
+        return sentLog;
+    }
 }
