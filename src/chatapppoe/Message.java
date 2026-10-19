@@ -17,4 +17,14 @@ public class Message {
             return "Cell phone number is incorrectly formatted or does not contain an international code. Please correct the number and try again.";
         }
     }
+  public String createMessageHash(String messageID, int messageNumber, String message) {
+    String[] words = message.split(" ");
+    String firstWord = words[0].replaceAll("[^a-zA-Z]", "");
+    String lastWord = words[words.length - 1].replaceAll("[^a-zA-Z]", "");
+    String start = messageID.substring(0, 2);
+
+    String hash = start + ":" + messageNumber + ":" + firstWord + lastWord;
+    return hash.toUpperCase();
+}  
+    
 }
